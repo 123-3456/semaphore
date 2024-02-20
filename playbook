@@ -15,7 +15,7 @@
 
     - name: Start mysql service
       service:
-        name: mysql
+        name: mysql.service  # Change this to the correct service name on your system
         state: started
 
     - name: Create MySQL database
