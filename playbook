@@ -1,15 +1,14 @@
 ---
 - hosts: all
   remote_user: ubuntu
-
   become: yes
   tasks:
-   - name: Install MySQL Server 8.0
+    - name: Install MySQL Server 8.0
       apt:
         name: mysql-server-8.0
         state: present
 
-    - name: "Install ansible python3 mysql dependency"
+    - name: Install ansible python3 mysql dependency
       apt:
         name: python3-mysqldb
         state: latest
@@ -19,16 +18,16 @@
         name: "{{ item }}"
         state: started
       loop:
-      - mysql
+        - mysql
 
-    - name: db
+    - name: Create 'magento' database
       mysql_db:
-       name: magento
-       state: present
+        name: magento
+        state: present
 
-    - name: user
+    - name: Create MySQL user 'codilar'
       mysql_user:
-       name: codilar
-       password: magento123
-       priv: '*.*:ALL'
-       state: present
+        name: codilar
+        password: magento123
+        priv: '*.*:ALL'
+        state: present
