@@ -4,11 +4,7 @@
 
   become: yes
   tasks:
-  - name: update apt packages
-    apt:
-      upgrade: yes
-      update_cache: yes
-  - name: Install MySQL Server 8.0
+   - name: Install MySQL Server 8.0
       apt:
         name: mysql-server-8.0
         state: present
